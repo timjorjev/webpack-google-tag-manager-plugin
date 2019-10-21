@@ -34,7 +34,7 @@ module.exports = {
           ...
         }),
         new GoogleTagManagerPlugin({
-            id: 'your-key',
+            id: 'your-container-id',
         }),
     ],
 }
@@ -54,7 +54,7 @@ module.exports = {
           ...
         }),
         new GoogleTagManagerPlugin({
-            id: 'your-key',
+            id: 'your-container-id',
             auth: 'your-auth-value',
             preview: 'your-environment-value',
         }),
