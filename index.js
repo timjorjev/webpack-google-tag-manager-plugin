@@ -44,14 +44,16 @@ class GoogleTagManagerPlugin {
       dataLayer: (() => {
           let result = `window.${this.options.dataLayerName}=window.${this.options.dataLayerName}||[];`
         
-          if (typeof this.options.dataLayer === `object` || this.options.dataLayer instanceof Object) {
-            result += `window.${this.options.dataLayerName}.push(${JSON.stringify(
-              this.options.dataLayer
-            )});`
-          } else {
-            console.error(
-              `The plugin option "dataLayer" should be a plain object. "${this.options.dataLayer}" is not valid.`
-            )
+          if (this.options.dataLayer) {
+            if (typeof this.options.dataLayer === `object` || this.options.dataLayer instanceof Object) {
+              result += `window.${this.options.dataLayerName}.push(${JSON.stringify(
+                this.options.dataLayer
+              )});`
+            } else {
+              console.error(
+                `The plugin option "dataLayer" should be a plain object. "${this.options.dataLayer}" is not valid.`
+              )
+            }
           }
           return stripIndent`${result}`
         })()
