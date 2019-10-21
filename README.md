@@ -7,6 +7,10 @@
   <p>A clean and easy way to add Google Tag Manager support to your web project.</p>
 </div>
 
+![npm](https://img.shields.io/npm/v/webpack-google-tag-manager-plugin)
+![npm](https://img.shields.io/npm/dw/webpack-google-tag-manager-plugin)
+
+
 ## Installation
 
 ```bash
