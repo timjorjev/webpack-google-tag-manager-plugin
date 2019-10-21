@@ -1,6 +1,6 @@
 {
   "name": "webpack-google-tag-manager-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A clean and easy way to add Google Tag Manager support to your web project.",
   "main": "index.js",
   "repository": {
