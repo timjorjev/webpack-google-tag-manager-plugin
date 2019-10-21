@@ -10,7 +10,6 @@
 ![npm](https://img.shields.io/npm/v/webpack-google-tag-manager-plugin)
 ![npm](https://img.shields.io/npm/dw/webpack-google-tag-manager-plugin)
 
-
 ## Installation
 
 ```bash
@@ -22,7 +21,27 @@
 ```
 
 ## Examples
-Webpack configuration for setting up the plugin
+Webpack basic configuration for setting up the plugin
+```Javascript
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import GoogleTagManagerPlugin from 'webpack-google-tag-manager-plugin'
+
+module.exports = {
+    ...
+    plugins: [
+        new HtmlWebpackPlugin({
+          ...
+        }),
+        new GoogleTagManagerPlugin({
+            id: 'your-key',
+        }),
+    ],
+}
+
+```
+
+Webpack configuration for making use of your environments
 ```Javascript
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -37,8 +56,8 @@ module.exports = {
         new GoogleTagManagerPlugin({
             id: 'your-key',
             auth: 'your-auth-value',
-            preview: 'your-environment-value'
-        })
+            preview: 'your-environment-value',
+        }),
     ],
 }
 
