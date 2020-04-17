@@ -6,7 +6,7 @@ class GoogleTagManagerPlugin {
   constructor(options) {
 
     const userOptions = options || {};
-
+    const optionalArguments = ``;
     const defaultOptions = {
       id: '',
       events: '',
@@ -22,19 +22,23 @@ class GoogleTagManagerPlugin {
       console.error(`The plugin option "id" has not been set.`)
     }
 
+    if(userOptions.auth && userOptions.preview) {
+      optionalArguments = `&gtm_auth=${userOptions.auth}&gtm_preview=${userOptions.preview}&gtm_cookies_win=x`;
+    }
+
     this.snippets = {
       script: stripIndent`
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js',${JSON.stringify(this.options.events).slice(1, -1)}});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=${this.options.auth}&gtm_preview=${this.options.preview}&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '${optionalArguments}';f.parentNode.insertBefore(j,f);
         })(window,document,'script','${this.options.dataLayerName}','${this.options.id}');</script>
         <!-- End Google Tag Manager -->
       `,
       noScript: stripIndent`
         <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${this.options.id}&gtm_auth=${this.options.auth}&gtm_preview=${this.options.preview}&gtm_cookies_win=x"
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${this.options.id}${optionalArguments}"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
       `,
