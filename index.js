@@ -11,7 +11,7 @@ class GoogleTagManagerPlugin {
       id: '',
       events: '',
       dataLayer: '',
-      dataLayerName: '',
+      dataLayerName: 'dataLayer',
       auth: '',
       preview: ''
     }
